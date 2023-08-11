@@ -640,12 +640,13 @@ public class ApiListenerServlet extends HttpServletBase {
 						contentType = computedContentType;
 					}
 				}
+				log.debug("Setting Content-Type header to [{}]", contentType);
 				response.setHeader("Content-Type", contentType.toString());
 
 				if(StringUtils.isNotEmpty(listener.getContentDispositionHeaderSessionKey())) {
 					String contentDisposition = messageContext.getMessage(listener.getContentDispositionHeaderSessionKey()).asString();
 					if(StringUtils.isNotEmpty(contentDisposition)) {
-						log.debug("Setting Content-Disposition header to ["+contentDisposition+"]");
+						log.debug("Setting Content-Disposition header to [{}]", contentDisposition);
 						response.setHeader("Content-Disposition", contentDisposition);
 					}
 				}
